@@ -15,7 +15,7 @@ if enableReport then
         local msg = table.concat(args, " ", 2)
         local username = GetPlayerName(user)
 		local reporter = GetPlayerName(source)
-		print(user)
+		
 		if username == nil then
 			print("Please make sure to fill in all fields")
 		else
