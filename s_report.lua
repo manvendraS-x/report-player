@@ -1,7 +1,13 @@
-webHookURL = "https://discordapp.com/api/webhooks/594213184827686924/WMy3SdUFpotiUX-fvskHQ29ZsQoxHOE0Snw_ynVLXTyvX_tbDf0cLVjcsJNDtVXwkvq4" -- The Webhook link to post too.
+webHookURL = "https://discordapp.com/api/webhooks/594201902560837633/lvmNZuALKfjU8AhjMyrAX3HOeUCYvgA1IWQ7kPXZLjgz_zUKdx45r4aB-uk1_rSeY9-c" -- The Webhook link to post too.
 local DISCORD_NAME = "Report Bot" -- Changes the name of the bot (default : Report Bot)
 local DISCORD_IMAGE = "https://www.realbookies.com/wp-content/uploads/2019/03/reporting-analytics_60.png" -- Any Image URL works
 enableReport = true -- Enable /report command
+
+-- Note, the command has to start with `/`.
+TriggerEvent('chat:addSuggestion', '/report', 'Reports A Player To Staff', {
+    { name="ID", help="param description 1" },
+    { name="Reason", help="param description 2" }
+})
 
 if enableReport then
     RegisterCommand("report", function(source, args, rawCommand)
@@ -9,8 +15,12 @@ if enableReport then
         local msg = table.concat(args, " ", 2)
         local username = GetPlayerName(user)
 		local reporter = GetPlayerName(source)
-        color = 1127128
-		sendMessage("The User ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
+		if user or msg == nil then
+			print("Please make sure to fill in all fields")
+		else
+			color = 1127128
+			sendMessage("The User ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
+		end
     end)
 end
 
