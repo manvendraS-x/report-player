@@ -15,8 +15,9 @@ if enableReport then
         local msg = table.concat(args, " ", 2)
         local username = GetPlayerName(user)
 		local reporter = GetPlayerName(source)
-		if user or msg == nil then
-			print("~r~Please make sure to fill in all fields, it is /report [id] [reason]")
+		print(user)
+		if user = nil then
+			print("Please make sure to fill in all fields")
 		else
 			color = 1127128
 			sendMessage("The User ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
