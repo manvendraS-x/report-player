@@ -1,4 +1,4 @@
-webHookURL = "https://discordapp.com/api/webhooks/594201902560837633/lvmNZuALKfjU8AhjMyrAX3HOeUCYvgA1IWQ7kPXZLjgz_zUKdx45r4aB-uk1_rSeY9-c" -- The Webhook link to post too.
+webHookURL = "" -- The Webhook link to post too.
 local DISCORD_NAME = "Report Bot" -- Changes the name of the bot (default : Report Bot)
 local DISCORD_IMAGE = "https://www.realbookies.com/wp-content/uploads/2019/03/reporting-analytics_60.png" -- Any Image URL works
 enableReport = true -- Enable /report command
@@ -16,10 +16,11 @@ if enableReport then
         local username = GetPlayerName(user)
 		local reporter = GetPlayerName(source)
 		print(user)
-		if user = nil then
+		if username == nil then
 			print("Please make sure to fill in all fields")
 		else
 			color = 1127128
+			print("The User".. username .. " Was Reported to Staff!")
 			sendMessage("The User ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
 		end
     end)
