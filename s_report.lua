@@ -1,14 +1,8 @@
 webHookURL = "" -- The Webhook link to post too.
 local DISCORD_NAME = "Report Bot" -- Changes the name of the bot (default : Report Bot)
 local DISCORD_IMAGE = "https://www.realbookies.com/wp-content/uploads/2019/03/reporting-analytics_60.png" -- Any Image URL works
-local role = "" -- Must be a role id
+local role = "588135194008092687" -- Must be a role id
 enableReport = true -- Enable /report command
-
--- Note, the command has to start with `/`.
-TriggerEvent('chat:addSuggestion', '/report', 'Reports A Player To Staff', {
-    { name="ID", help="param description 1" },
-    { name="Reason", help="param description 2" }
-})
 
 local role = "<@&"..role..">"
 
@@ -18,13 +12,12 @@ if enableReport then
         local msg = table.concat(args, " ", 2)
         local username = GetPlayerName(user)
 		local reporter = GetPlayerName(source)
-		print(user)
 		if username == nil then
-			print("Please make sure to fill in all fields")
+			print("Please assure that the ID is correct (invalid or no ID detected)")
 		else
-			color = 1127128
+			color = 16711680
 			print("The User".. username .. " Was Reported to Staff!")
-			sendMessage("The User ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
+			sendMessage("The User ["..user.."] ".. username .. " Was Reported For: ","**".. msg.."**", color, reporter)
 		end
     end)
 end
